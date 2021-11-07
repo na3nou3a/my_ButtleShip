@@ -1,0 +1,459 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+/* =============== 
+ButtleShip Game
+===============
+*/
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: seashell;
+  color: #000;
+  line-height: 1.5;
+  font-size: 100%;
+  text-align: center;
+}
+
+main {
+  min-height: 100vh;
+}
+
+header {
+  background-color: rgb(0, 0, 0);
+}
+header h1 {
+  padding: 0.6em 0;
+  color: gold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+footer {
+  background-color: rgb(223, 213, 215);
+}
+
+footer p {
+  padding: 0.3em 0;
+}
+
+.wrapper {
+  width: 98%;
+  max-width: 1200px;
+  min-height: 80vh;
+  padding: 0.5em 0;
+  margin: 1em auto;
+  background-color: #d5d5d5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-image: url("./images/war-ship_640.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.game-environment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  width: 100%;
+  max-width: 830px;
+  margin: 0.5em auto;
+  padding: 0.5em;
+}
+
+.drag-container,
+.grid-board {
+  width: 400px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0.5em auto;
+  border-radius: 2px;
+}
+
+.drag-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: distribute;
+  align-content: space-around;
+  background-color: seashell;
+}
+
+.grid-board {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.grid-board div {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(228, 228, 230);
+  font-weight: 900;
+  font-size: 120%;
+  line-height: 2;
+}
+
+.player-grid div.ship-part {
+  border: none;
+  border-radius: 5px;
+  background-color: #222;
+}
+
+.draggable-ships {
+  min-width: 350px;
+  max-width: 380px;
+  min-height: 250px;
+  padding: 0.5em;
+  margin: auto;
+  background-color: turquoise;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+.draggable-ships .d-ship {
+  margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  background-color: rgb(53, 50, 50);
+  border-radius: 5px 10px;
+}
+
+.draggable-ships .d-ship:hover {
+  background-color: black;
+}
+
+.draggable-ships .d-ship div {
+  width: 40px;
+  height: 40px;
+}
+
+/* rotate */
+.draggable-ships .d-ship.vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0%;
+}
+
+.player-grid:not(.player2) {
+  background-color: blue;
+  background: -o-linear-gradient(bottom, blue, aqua, turquoise);
+  background: -webkit-gradient(linear, left bottom, left top, from(blue), color-stop(aqua), to(turquoise));
+  background: linear-gradient(to top, blue, aqua, turquoise);
+}
+
+.computer-grid,
+.player2 {
+  background-color: rgb(235, 134, 134);
+}
+
+.computer-grid div {
+  cursor: pointer;
+}
+
+.news {
+  background-color: rgb(197, 233, 238);
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  padding: 0.5em;
+  margin: 0.5em auto;
+  text-align: center;
+  font-size: 120%;
+  font-weight: 500;
+  max-width: 97%;
+  min-width: 70%;
+  height: 2.4em;
+  color: rgb(6, 6, 71);
+  border: 1px solid rgb(84, 84, 211);
+  border-radius: 10px;
+}
+
+.news.class1 {
+  background-color: rgb(58, 58, 172);
+  color: #fff;
+}
+
+.players-news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5em;
+  width: 100%;
+}
+.players-news p {
+  padding: 0.5em;
+  width: 49%;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(84, 84, 211);
+  border-radius: 5px;
+  border: 1px solid rgb(62, 62, 240);
+  margin: 5px;
+  text-transform: capitalize;
+}
+
+.player-info {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 95%;
+  max-width: 700px;
+  min-height: 300px;
+  background-color: #000;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.player-info input,
+.player-info .btn {
+  width: 90%;
+  display: block;
+  padding: 10px 16px;
+  outline: none;
+  border: none;
+  font-size: 120%;
+  border-radius: 4px;
+}
+
+/* btns */
+.btn {
+  text-transform: capitalize;
+  background-color: rgb(12, 143, 12);
+  color: #fff;
+  padding: 6px 12px;
+  margin: 5px auto;
+  letter-spacing: 2px;
+  display: inline-block;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-size: 1em;
+  border: 1px solid rgb(14, 70, 14);
+  cursor: pointer;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  width: 120px;
+}
+.btn:hover {
+  color: #fff;
+  background: rgb(9, 78, 9);
+}
+
+.btns {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  min-width: 280px;
+  max-width: 320px;
+  padding: 1em;
+}
+
+.btns .btn {
+  margin: 5px;
+}
+
+.btn.replay {
+  margin: 1em auto;
+  display: block;
+}
+
+.btns-model {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: rgb(0, 0, 0);
+  min-width: 300px;
+  min-height: 200px;
+  padding: 0.5em;
+  margin: auto;
+}
+
+.btns-model .btn {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.bckg {
+  background-color: #464343;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+/* computer-grid player-grid */
+.computer-grid .ship-part, .player-grid.player1 .ship-part, .player-grid.player2 .ship-part {
+  background-color: transparent;
+  border: 1px solid rgb(228, 228, 230);
+}
+
+.computer-grid div.ship-part.win {
+  background-color: green;
+  color: black;
+}
+
+.player-grid div.ship-part.win {
+  background-color: red;
+  color: black;
+}
+
+.computer-grid div.ship-part.lose,
+.player-grid div.ship-part.lose {
+  background-color: white;
+  color: black;
+}
+
+/* classes */
+
+#news.success,
+.success {
+  background-color: hsl(125, 74%, 82%);
+  color: hsl(126, 79%, 17%);
+}
+
+#news.danger,
+.danger {
+  background-color: rgb(243, 164, 164);
+  color: rgb(122, 5, 5);
+}
+
+/* winner message model */
+.remove {
+  width: 30px;
+  height: 30px;
+  color: rgb(233, 8, 8);
+  background-color: #d5d5d5;
+  padding: 2px;
+  font-size: 160%;
+  line-height: 1;
+  font-weight: 600;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+}
+
+.remove:hover {
+  background-color: rgb(48, 47, 47);
+  color: #fff;
+}
+
+.winner-message {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 400px;
+  height: 280px;
+  padding: 0.6em;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.winner-message p {
+  width: 80%;
+  padding: 1em;
+  margin: 1em auto;
+  border-radius: 5px;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+
+.winner-message button.btn.replay {
+  padding: 8px 14px;
+  color: #fff;
+  width: 110px;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  body {
+    font-size: 110%;
+  }
+
+  h1 {
+    line-height: 1;
+  }
+}
+
+div.game-environment.hide {
+  display: none;
+}
+
+.grid-board.cursor div {
+  cursor: pointer;
+}
+
+
